@@ -11,4 +11,7 @@ values (3, 'Jeremy Lin', 26);
 
 insert into celebs (id, name, age)
 values (4, 'Taylor Swift', 26);
+
+delete from celebs
+where twitter_handle is not null;
 select * from celebs;
