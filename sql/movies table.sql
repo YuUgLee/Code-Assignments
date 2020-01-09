@@ -19,11 +19,16 @@ values ('Avengers: Endgame', 'action', 2018);
 insert into movies (name, genre, year)
 values ('Batman v. Superman: Dawn of Justice', 'action', 2016);
 
-select name as 'Titles' #changes the text display of the column
+select name as 'Titles' #changes the text display of the column in the result but not the actual table
 from movies;
 
 select imdb_rating as 'IMDb'
 from movies;
+
+select distinct name, genre, year
+from movies;
+
+
 
     
     
