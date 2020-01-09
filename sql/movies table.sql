@@ -19,6 +19,18 @@ values ('Avengers: Endgame', 'action', 2018);
 insert into movies (name, genre, year)
 values ('Batman v. Superman: Dawn of Justice', 'action', 2016);
 
+insert into movies (imdb_rating)
+values (5);
+
+insert into movies (imdb_rating)
+values (3);
+
+insert into movies (imdb_rating)
+values (7);
+
+insert into movies (imdb_rating)
+values (2);
+
 select name as 'Titles' #changes the text display of the column in the result but not the actual table
 from movies;
 
@@ -27,6 +39,12 @@ from movies;
 
 select distinct name, genre, year
 from movies;
+
+select * from movies
+where imdb_rating <5;
+
+select * from movies
+where name like 'Ba_man'; #can replace underlined with any character(s) 
 
 
 
