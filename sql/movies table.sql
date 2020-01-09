@@ -45,6 +45,7 @@ where imdb_rating <5;
 
 select * from movies
 where name like 'Ba_man'; #can replace underlined with any character(s) 
+select * from movies where name like '%man%';
 
 
 
