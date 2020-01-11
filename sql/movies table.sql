@@ -19,9 +19,16 @@ values ('Avengers: Endgame', 'action', 2018, 7);
 insert into movies (name, genre, year, imdb_rating)
 values ('Batman v. Superman: Dawn of Justice', 'action', 2016, 10);
 
-select name,genre from movies where genre = 'action';
+select name, genre from movies where genre = 'action';
 select * from movies order by imdb_rating desc
 	limit 2;
+    
+SELECT name,
+	case
+     when imdb_rating > 5 then 'Good Enough'
+     else 'Do not even bother'
+	end
+from movies;
 insert into movies (imdb_rating)
 values (5);
 
