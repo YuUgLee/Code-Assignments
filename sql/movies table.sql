@@ -50,6 +50,7 @@ from movies;
 select distinct name, genre, year
 from movies;
 select count(*) from movies;
+select sum(imdb_rating) from movies;
 
 select * from movies
 where imdb_rating <5;
