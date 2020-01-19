@@ -1,5 +1,11 @@
 use world;#must have a database to to make table in
-
+create table ratings (
+	imdb_rating integer,
+    year integer
+    );
+    
+select * from movies join ratings;
+    
 create table movies ( #to create the table
 	name text,
     genre text,
@@ -29,8 +35,8 @@ SELECT name,
      else 'Do not even bother'
 	end
 from movies;
-insert into movies (imdb_rating)
-values (5);
+insert into ratings (imdb_rating)
+values (3);
 
 insert into movies (imdb_rating)
 values (3);
@@ -62,6 +68,9 @@ select * from movies
 where name like 'Ba_man'; #can replace underlined with any character(s) 
 select * from movies where name like '%man%';
 
+select * from movies
+left join ratings
+	on movies.imdb_rating= ratings.imdb_rating;
 
 
     
