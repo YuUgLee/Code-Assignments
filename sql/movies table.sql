@@ -53,6 +53,7 @@ select count(*) from movies;
 select sum(imdb_rating) from movies;
 select max(imdb_rating) from movies;
 select min(imdb_rating) from movies;
+select avg(imdb_rating) from movies;
 
 select * from movies
 where imdb_rating <5;
