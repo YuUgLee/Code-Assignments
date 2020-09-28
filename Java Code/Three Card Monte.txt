@@ -1,0 +1,145 @@
+@author Judy Li
+@author Guadalupe Santos
+@author Newton Bao
+@author Brian Khong
+//Demoed at 5:49 PM
+
+import java.util.Scanner;
+import java.util.Random;
+
+class Main {
+
+  // declare a variable for the win condition
+  public static int win;
+  
+  // generate an array and randomize the win condition using Random
+  public static void shuffle () {
+    Random rand = new Random();
+
+    int[] nums = {1, 2, 3};
+
+    win = nums[rand.nextInt(3)];
+  }
+  
+  // Calculates money after winning or losing the bet
+  // @param total money, amount betting, integer indicating win or loss
+  //@return total money
+  public static int calculate(int money, int bet, int w){
+
+    if (w == 1)
+    {
+      bet *= 2;
+      money += bet;
+    }
+
+    else if (w == 0)
+    {
+      money -= bet;  
+    }
+    
+    return money;
+  }
+  
+  // based on the win condition, display the cards in their corresponding spots
+  // the queen's position = the number of the win condition
+  public static void display()
+  {
+    if (win == 1)
+    {
+            System.out.println(" ----     ----     ---- \n"+
+                               "|    |   |    |   |    |\n" + 
+                               "| Q  |   | K  |   | K  |\n" + 
+                               "|    |   |    |   |    |\n" +
+                               " ----     ----     ---- \n");
+    }
+
+    else if (win == 2)
+    {
+            System.out.println(" ----     ----     ---- \n"+
+                               "|    |   |    |   |    |\n" + 
+                               "| K  |   | Q  |   | K  |\n" + 
+                               "|    |   |    |   |    |\n" +
+                               " ----     ----     ---- \n");
+    }
+
+    else
+    {
+            System.out.println(" ----     ----     ---- \n"+
+                               "|    |   |    |   |    |\n" + 
+                               "| K  |   | K  |   | Q  |\n" + 
+                               "|    |   |    |   |    |\n" +
+                               " ----     ----     ---- \n");
+    }
+  }
+
+  public static void main(String[] args) 
+  {
+    Scanner sc = new Scanner(System.in);
+
+    System.out.println("-Three Card Monte-\n");
+    
+    int money = 100;
+    int bet;
+    int w;
+
+    // inputs
+    String input;
+    int answer;
+    
+    do
+    {
+      System.out.println("Money: $" + money);
+      
+      shuffle();
+
+      System.out.print("How much would you like to bet (Q to quit)? ");
+      input = sc.nextLine();
+
+      // immediate exit
+      if (input.equalsIgnoreCase("q"))
+      {
+        System.out.println("Quitting while you're ahead eh?");
+        break;
+      }
+      
+      // convert input to int
+      bet = Integer.parseInt(input);
+    
+      System.out.println(" ----     ----     ---- \n"+
+                         "|    |   |    |   |    |\n" + 
+                         "| 1  |   | 2  |   | 3  |\n" + 
+                         "|    |   |    |   |    |\n" +
+                         " ----     ----     ---- \n");
+      
+      System.out.print("Find the queen: ");
+
+      answer = sc.nextInt();
+      
+      // checking the input against the win condition
+      if (answer == win)
+      {
+        w=1;
+        money=calculate(money,bet,w);
+        display();
+        System.out.println("Eh, you just got lucky.\n");
+      }
+      
+      else
+      {
+        w=0;
+        money=calculate(money,bet,w);
+        display();
+        System.out.println("HaHa. Sucker.\n");
+      }
+
+      // clear scanner
+      sc.nextLine();
+    }
+    
+    //if money is less than 0 do-while loop breaks
+    while (money > 0);
+
+    if (money < 0)
+      System.out.println("Out of money.");
+  }
+}
